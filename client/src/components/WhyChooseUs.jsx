@@ -1,5 +1,6 @@
 import { Container, Row, Col } from 'react-bootstrap';
-import { PersonCheck, ShieldCheck, Award } from 'react-bootstrap-icons';
+import { PersonCheck, Award, ShieldCheck } from 'react-bootstrap-icons';
+import whyImage from '../assets/images/why-choose-us.jpg';
 
 const features = [
   {
@@ -23,9 +24,18 @@ function WhyChooseUs() {
   return (
     <section className="why-choose-us py-5">
       <Container>
-        <Row>
-          <Col lg={8} className="mx-auto text-center mb-5">
-            <p className="section-tag ">Why Choose Us?</p>
+        <Row className="align-items-center g-5 mb-5">
+          <Col lg={6}>
+            <div className="why-image-wrap">
+              <img src={whyImage} alt="Why choose Onera Real Estate" className="why-image" />
+              <div className="why-image-badge">
+                <span className="why-image-badge-number">20+</span>
+                <span className="why-image-badge-label">Years of Excellence</span>
+              </div>
+            </div>
+          </Col>
+          <Col lg={6}>
+            <p className="section-tag">Why Choose Us?</p>
             <h2>BUILDING TRUST THROUGH INTEGRITY</h2>
             <p className="mt-3 text-muted">
               Real estate decisions carry weight, and we treat every one of them that way. For
@@ -35,6 +45,7 @@ function WhyChooseUs() {
             </p>
           </Col>
         </Row>
+
         <Row className="g-4">
           {features.map((f) => {
             const Icon = f.icon;
