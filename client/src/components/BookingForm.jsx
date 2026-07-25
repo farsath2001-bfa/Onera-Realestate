@@ -22,7 +22,7 @@ function BookingForm() {
     e.preventDefault();
     setStatus('loading');
     try {
-      await axios.post('http://localhost:5000/api/leads', formData);
+      await axios.post('https://onera-realestate.onrender.com/api/leads', formData);
       setStatus('success');
       setFormData({ fullName: '', email: '', phone: '', service: '' });
     } catch (error) {

@@ -11,7 +11,7 @@ import NotFound from './pages/NotFound';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
+import Admin from './pages/Admin';
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +24,7 @@ function App() {
         <Route path="/services/:slug" element={<ServiceDetail />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       <Footer />
       <FloatingWhatsApp />
