@@ -1165,9 +1165,12 @@ h1, h2, h3 {
 
 .admin-login-page {
   min-height: 70vh;
-  display: flex;
-  align-items: center;
-  padding-top: 100px;
+  padding-top: 140px;
+  padding-bottom: 60px;
+}
+.admin-login-page .booking-card {
+  max-width: 420px;
+  margin: 0 auto;
 }
 
 .admin-page {
