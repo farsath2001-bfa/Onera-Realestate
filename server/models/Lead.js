@@ -6,10 +6,7 @@ const leadSchema = new mongoose.Schema(
     email: { type: String, required: true },
     phone: { type: String, required: true },
     service: { type: String, required: true },
-    zipCode: { type: String },
-    address: { type: String },
-    visitDate: { type: String },
-    visitTime: { type: String },
+    contacted: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

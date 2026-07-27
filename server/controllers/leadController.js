@@ -10,10 +10,6 @@ const createLead = async (req, res) => {
 };
 
 const getLeads = async (req, res) => {
-  const adminKey = req.headers['x-admin-key'];
-  if (adminKey !== process.env.ADMIN_KEY) {
-    return res.status(401).json({ message: 'Unauthorized' });
-  }
   try {
     const leads = await Lead.find().sort({ createdAt: -1 });
     res.json(leads);
@@ -22,4 +18,13 @@ const getLeads = async (req, res) => {
   }
 };
 
-module.exports = { createLead, getLeads };
+const updateLead = async (req, res) => {
+  try {
+    const lead = await Lead.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(lead);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+module.exports = { createLead, getLeads, updateLead };
