@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Compass, PeopleFill, ShieldCheck } from 'react-bootstrap-icons';
 import aboutImage from '../assets/images/about-intro.jpg';
 import usePageTitle from '../hooks/usePageTitle';
-import aboutBg from '../assets/images/about.jpg';
+import aboutBg from '../assets/images/About.jpg';
 
 const values = [
   {
