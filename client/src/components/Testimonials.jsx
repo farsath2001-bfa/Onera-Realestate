@@ -3,17 +3,17 @@ import { Quote } from 'react-bootstrap-icons';
 
 const testimonials = [
   {
-    quote: "Onera made a complex Dubai Marina purchase feel simple. They handled the details so I didn't have to chase anything myself.",
+    quote: "From our first call to the final signature, everything felt handled. Onera made buying in Dubai Marina feel simple, not stressful.",
     name: 'Michael Carter',
     role: 'Investor, Dubai Marina',
   },
   {
-    quote: 'From the first call to closing, everything moved fast without ever feeling rushed. Their team was responsive at every step.',
+    quote: 'Quick, responsive, and genuinely helpful at every step. I never once felt like just another transaction.',
     name: 'Emily Davis',
     role: 'Homebuyer, Downtown Dubai',
   },
   {
-    quote: 'I closed on a commercial property in Sharjah with flexible terms that actually worked for my budget — no compromises on location.',
+    quote: "Closed on a commercial property in Sharjah with terms that actually worked for my budget — no pressure, no compromises.",
     name: 'Ahmed Al Mansoori',
     role: 'Entrepreneur, Dubai',
   },
