@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Compass, PeopleFill, ShieldCheck } from 'react-bootstrap-icons';
 import aboutImage from '../assets/images/about-intro.jpg';
 import usePageTitle from '../hooks/usePageTitle';
+import aboutBg from '../assets/images/about.jpg';
 
 const values = [
   {
@@ -26,20 +27,20 @@ function AboutUs() {
    usePageTitle('About Us');
   return (
     <>
-      <section className="about-hero">
-        <Container>
-          <Row>
-            <Col lg={8} className="mx-auto text-center">
-              <p className="section-tag section-tag-light">About Onera</p>
-              <h1>A Real Estate Company Built on Trust</h1>
-              <p className="lead mt-3">
-                Onera Real Estate offers sales, purchase, and rental services with expertise and
-                professionalism — meeting the needs of individuals and investors across the UAE.
-              </p>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+      <section className="about-hero" style={{ backgroundImage: `url(${aboutBg})` }}>
+             <div className="about-hero-overlay" />
+               <Container className="position-relative">
+             <Row>
+               <Col lg={8} className="mx-auto text-center">
+                 <p className="section-tag section-tag-light">About Onera</p>
+                 <h1>A Real Estate Company Built on Trust</h1>
+                 <p className="lead mt-3">
+                Onera Real Estate offers sales, purchase, and rental services with expertise and professionalism — meeting the needs of individuals and investors across the UAE.
+                </p>
+                </Col>
+              </Row>
+               </Container>
+       </section>
 
       <section className="about-intro py-5">
         <Container>

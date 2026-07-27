@@ -914,11 +914,25 @@ h1, h2, h3 {
 }
 
 .about-hero {
+  position: relative;
   background-color: var(--onera-dark);
-  padding: 180px 0 80px;
+  background-size: cover;
+  background-position: center;
+  padding: 260px 0 80px;
   text-align: center;
+  overflow: hidden;
 }
 
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,71,63,0.85), rgba(0,71,63,0.7));
+}
+
+.about-hero .container {
+  position: relative;
+  z-index: 1;
+}
 .about-hero h1 {
   color: #fff;
   font-size: 44px;
