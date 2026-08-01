@@ -47,7 +47,7 @@ function AboutUs() {
           <Row className="align-items-center g-5">
             <Col lg={6}>
               <div className="about-intro-image-wrap">
-                <img src={aboutImage} alt="Onera Real Estate" className="about-intro-image" />
+                <img src={aboutImage} alt="Onera Real Estate" className="about-intro-image" loading="lazy" />
               </div>
             </Col>
             <Col lg={6}>

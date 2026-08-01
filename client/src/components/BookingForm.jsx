@@ -36,7 +36,7 @@ function BookingForm() {
         <Row className="align-items-center g-5">
           <Col lg={6}>
             <div className="booking-image-wrap">
-              <img src={bookingImage} alt="Get in touch with Onera Real Estate" className="booking-image" />
+              <img src={bookingImage} alt="Get in touch with Onera Real Estate" className="booking-image" loading="lazy" />
             </div>
           </Col>
           <Col lg={6}>

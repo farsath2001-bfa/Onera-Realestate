@@ -27,7 +27,7 @@ function WhyChooseUs() {
         <Row className="align-items-center g-5 mb-5">
           <Col lg={6}>
             <div className="why-image-wrap">
-              <img src={whyImage} alt="Why choose Onera Real Estate" className="why-image" />
+              <img src={whyImage} alt="Why choose Onera Real Estate" className="why-image" loading="lazy" />
               <div className="why-image-badge">
                 <span className="why-image-badge-number">20+</span>
                 <span className="why-image-badge-label">Years of Excellence</span>

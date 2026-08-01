@@ -13,7 +13,7 @@ function ServicesGrid() {
               <Link to={`/services/${s.slug}`} className="service-card-link">
                 <Card className="h-100 service-card">
                   <div className="service-card-image-wrap">
-                    <Card.Img variant="top" src={s.image} className="service-card-image" />
+                    <Card.Img variant="top" src={s.image} className="service-card-image" loading="lazy" />
                   </div>
                   <Card.Body>
                     <Card.Title>{s.name}</Card.Title>
