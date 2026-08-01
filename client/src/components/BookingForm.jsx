@@ -60,31 +60,42 @@ function BookingForm() {
                 {status === 'error' && <Alert variant="danger">Something went wrong. Please try again.</Alert>}
 
                 <Form onSubmit={handleSubmit}>
-                  <FloatingLabel label="Full Name" className="mb-3">
-                    <Form.Control name="fullName" placeholder="Full Name" value={formData.fullName} onChange={handleChange} required />
-                  </FloatingLabel>
+                {status === 'loading' && (
+                <p className="text-muted text-center mb-3" style={{ fontSize: '13px' }}>
+                 This may take up to a minute if our server has been idle — thanks for your patience.
+                 </p>
+      )}
 
-                  <FloatingLabel label="Email Address" className="mb-3">
-                    <Form.Control type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} required />
-                  </FloatingLabel>
+              <FloatingLabel label="Full Name" className="mb-3">
+                 <Form.Control name="fullName" placeholder="Full Name" value={formData.fullName} onChange={handleChange} required />
+              </FloatingLabel>
 
-                  <FloatingLabel label="Phone Number" className="mb-3">
-                    <Form.Control name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required />
-                  </FloatingLabel>
+              <FloatingLabel label="Email Address" className="mb-3">
+                  <Form.Control type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} required />
+              </FloatingLabel>
 
-                  <FloatingLabel label="Select a Service" className="mb-4">
-                    <Form.Select name="service" value={formData.service} onChange={handleChange} required>
-                      <option value="">Select a Service</option>
-                      {services.map((s) => (
-                        <option key={s.slug} value={s.name}>{s.name}</option>
-                      ))}
-                    </Form.Select>
-                  </FloatingLabel>
+              <FloatingLabel label="Phone Number" className="mb-3">
+                 <Form.Control name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required />
+               </FloatingLabel>
+ 
+                <FloatingLabel label="Select a Service" className="mb-4">
+                 <Form.Select name="service" value={formData.service} onChange={handleChange} required>
+                <option value="">Select a Service</option>
+                   {services.map((s) => (
+                  <option key={s.slug} value={s.name}>{s.name}</option>
+                   ))}
+              </Form.Select>
+               </FloatingLabel>
 
-                  <Button type="submit" className="onera-btn w-100" disabled={status === 'loading'}>
-                    {status === 'loading' ? 'Submitting...' : 'Submit Request'}
-                  </Button>
-                </Form>
+             <Button type="submit" className="onera-btn w-100" disabled={status === 'loading'}>
+              {status === 'loading' ? (
+                 <>
+               <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                Submitting...
+                </>
+               ) : ('Submit Request' )}
+               </Button>
+              </Form>
               </div>
             )}
           </Col>

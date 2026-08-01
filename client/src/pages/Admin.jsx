@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Table, Form, Button, Badge, Alert } from 'react-bootstrap';
 import axios from 'axios';
+import { Eye, EyeSlash } from 'react-bootstrap-icons';
 import usePageTitle from '../hooks/usePageTitle';
 import services from '../data/services';
 
@@ -12,6 +13,7 @@ function Admin() {
   const [authed, setAuthed] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [leads, setLeads] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -96,6 +98,12 @@ function Admin() {
               <h2 className="mb-4">Log In</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <Form onSubmit={handleLogin}>
+                {loading && (
+                  <p className="text-muted text-center mb-3" style={{ fontSize: '13px' }}>
+                    Waking up the server — this can take up to a minute after inactivity.
+                  </p>
+                )}
+
                 <Form.Control
                   type="email"
                   placeholder="Email"
@@ -104,16 +112,34 @@ function Admin() {
                   className="mb-3"
                   required
                 />
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="mb-3"
-                  required
-                />
+
+                <div className="password-field-wrap mb-3">
+                  <Form.Control
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="password-toggle-btn"
+                    onClick={() => setShowPassword(!showPassword)}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  >
+                    {showPassword ? <EyeSlash size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
+
                 <Button type="submit" className="onera-btn w-100" disabled={loading}>
-                  {loading ? 'Logging in...' : 'Log In'}
+                  {loading ? (
+                    <>
+                      <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                      Logging in...
+                    </>
+                  ) : (
+                    'Log In'
+                  )}
                 </Button>
               </Form>
             </div>

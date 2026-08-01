@@ -1263,3 +1263,28 @@ h1, h2, h3 {
   font-weight: 500;
   font-size: 12px;
 }
+.password-field-wrap {
+  position: relative;
+}
+
+.password-field-wrap .form-control {
+  padding-right: 44px;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--onera-text-muted);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.password-toggle-btn:hover {
+  color: var(--onera-dark);
+}
