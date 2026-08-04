@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import services from '../data/services';
+import useFadeIn from '../hooks/useFadeIn';
 
 function ServicesGrid() {
+  const [ref, isVisible] = useFadeIn();
+
   return (
-    <section className="services-grid py-5">
+    <section className="services-grid py-5" ref={ref}>
       <Container>
         <h2 className="text-center mb-5">Smart Real Estate Solutions Built for Long-Term Value</h2>
-        <Row className="g-4">
+        <Row className={`g-4 fade-in-section ${isVisible ? 'visible' : ''}`}>
           {services.map((s) => (
             <Col md={6} lg={4} key={s.slug}>
               <Link to={`/services/${s.slug}`} className="service-card-link">

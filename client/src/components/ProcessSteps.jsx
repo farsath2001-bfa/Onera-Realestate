@@ -1,4 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
+import useFadeIn from '../hooks/useFadeIn';
 
 const steps = [
   {
@@ -24,8 +25,10 @@ const steps = [
 ];
 
 function ProcessSteps() {
+  const [ref, isVisible] = useFadeIn();
+
   return (
-    <section className="process-steps py-5">
+    <section className="process-steps py-5" ref={ref}>
       <Container>
         <Row>
           <Col lg={8} className="mx-auto text-center mb-5">
@@ -37,7 +40,7 @@ function ProcessSteps() {
             </p>
           </Col>
         </Row>
-        <Row className="g-4">
+        <Row className={`g-4 fade-in-section ${isVisible ? 'visible' : ''}`}>
           {steps.map((s) => (
             <Col md={6} lg={3} key={s.number}>
               <div className="step-card">

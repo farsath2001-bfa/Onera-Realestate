@@ -1,9 +1,9 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Compass, PeopleFill, ShieldCheck } from 'react-bootstrap-icons';
+import { Compass, PeopleFill, ShieldCheck, ArrowRight } from 'react-bootstrap-icons';
 import aboutImage from '../assets/images/about-intro.jpg';
-import usePageTitle from '../hooks/usePageTitle';
 import aboutBg from '../assets/images/About.jpg';
+import useFadeIn from '../hooks/useFadeIn';
 
 const values = [
   {
@@ -23,24 +23,52 @@ const values = [
   },
 ];
 
+const milestones = [
+  { year: '4 Years', label: 'Onera Real Estate Established' },
+  { year: '20+ Years', label: 'Combined Market Experience' },
+  { year: '70%', label: 'Client Satisfaction Rate' },
+  { year: 'Today', label: 'Trusted Across the UAE Market' },
+];
+
+const processSteps = [
+  {
+    number: '01',
+    title: 'Consultation',
+    text: 'We start by understanding your goals — whether buying, selling, or investing.',
+  },
+  {
+    number: '02',
+    title: 'Strategy',
+    text: 'A clear, tailored plan built around your timeline and priorities.',
+  },
+  {
+    number: '03',
+    title: 'Execution',
+    text: 'We handle the details, keep you informed, and stay involved past closing.',
+  },
+];
+
 function AboutUs() {
-   usePageTitle('About Us');
+  const [milestonesRef, milestonesVisible] = useFadeIn();
+  const [processRef, processVisible] = useFadeIn();
+
   return (
     <>
       <section className="about-hero" style={{ backgroundImage: `url(${aboutBg})` }}>
-             <div className="about-hero-overlay" />
-               <Container className="position-relative">
-             <Row>
-               <Col lg={8} className="mx-auto text-center">
-                 <p className="section-tag section-tag-light">About Onera</p>
-                 <h1>A Real Estate Company Built on Trust</h1>
-                 <p className="lead mt-3">
-                Onera Real Estate offers sales, purchase, and rental services with expertise and professionalism — meeting the needs of individuals and investors across the UAE.
-                </p>
-                </Col>
-              </Row>
-               </Container>
-       </section>
+        <div className="about-hero-overlay" />
+        <Container className="position-relative">
+          <Row>
+            <Col lg={8} className="mx-auto text-center">
+              <p className="section-tag section-tag-light">About Onera</p>
+              <h1>A Real Estate Company Built on Trust</h1>
+              <p className="lead mt-3">
+                Onera Real Estate offers sales, purchase, and rental services with expertise and
+                professionalism — meeting the needs of individuals and investors across the UAE.
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
       <section className="about-intro py-5">
         <Container>
@@ -114,30 +142,54 @@ function AboutUs() {
         </Container>
       </section>
 
-      <section className="founder-section py-5">
+      <section className="milestones-section py-5" ref={milestonesRef}>
         <Container>
-          <Row className="align-items-center g-5">
-            <Col lg={4} className="text-center">
-              <div className="founder-avatar">EAD</div>
+          <Row>
+            <Col lg={8} className="mx-auto text-center mb-5">
+              <p className="section-tag section-tag-light">Our Journey</p>
+              <h2 className="milestones-heading">Milestones That Define Us</h2>
             </Col>
-            <Col lg={8}>
-              <p className="section-tag">Meet the Founder</p>
-              <h2>Eng. Ahlam Darawsheh</h2>
-              <p className="founder-role">Founder & CEO, Onera Real Estate</p>
-              <p className="text-muted mt-3">
-                With 20 years of real estate experience, Eng. Ahlam Darawsheh founded Onera Real
-                Estate to bring a more personal, trust-first approach to the UAE property market
-                — one built on transparency, precision, and long-term client relationships. Under
-                her leadership, Onera has grown into a name known for reliable guidance and
-                results that speak for themselves.
+          </Row>
+          <Row className={`g-4 fade-in-section ${milestonesVisible ? 'visible' : ''}`}>
+            {milestones.map((m) => (
+              <Col md={3} sm={6} key={m.label}>
+                <div className="milestone-card text-center">
+                  <p className="milestone-year">{m.year}</p>
+                  <p className="milestone-label">{m.label}</p>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+
+      <section className="about-process-section py-5" ref={processRef}>
+        <Container>
+          <Row>
+            <Col lg={8} className="mx-auto text-center mb-5">
+              <p className="section-tag">How We Work</p>
+              <h2>A Simple, Guided Process</h2>
+              <p className="mt-3 text-muted">
+                No confusion, no guesswork — just a clear path from your first call to a closed
+                deal.
               </p>
-              <div className="founder-contact mt-4">
-                <a href="mailto:ahlam@onera.ae">ahlam@onera.ae</a>
-                <span className="founder-contact-divider">•</span>
-                <a href="tel:+971543732303">+971 54 373 2303</a>
-              </div>
-              <Link to="/contact-us" className="btn onera-btn mt-4">
-                Get In Touch
+            </Col>
+          </Row>
+          <Row className={`g-4 fade-in-section ${processVisible ? 'visible' : ''}`}>
+            {processSteps.map((step) => (
+              <Col md={4} key={step.number}>
+                <div className="about-process-card">
+                  <p className="about-process-number">{step.number}</p>
+                  <h5>{step.title}</h5>
+                  <p className="text-muted">{step.text}</p>
+                </div>
+              </Col>
+            ))}
+          </Row>
+          <Row>
+            <Col className="text-center mt-4">
+              <Link to="/contact-us" className="btn onera-btn">
+                Start Your Journey <ArrowRight className="ms-2" size={16} />
               </Link>
             </Col>
           </Row>

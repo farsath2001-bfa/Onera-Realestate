@@ -1,5 +1,6 @@
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Quote } from 'react-bootstrap-icons';
+import useFadeIn from '../hooks/useFadeIn';
 
 const testimonials = [
   {
@@ -20,8 +21,10 @@ const testimonials = [
 ];
 
 function Testimonials() {
+  const [ref, isVisible] = useFadeIn();
+
   return (
-    <section className="testimonials py-5">
+    <section className="testimonials py-5" ref={ref}>
       <Container>
         <Row>
           <Col lg={8} className="mx-auto text-center mb-5">
@@ -32,7 +35,7 @@ function Testimonials() {
             </p>
           </Col>
         </Row>
-        <Row className="g-4">
+        <Row className={`g-4 fade-in-section ${isVisible ? 'visible' : ''}`}>
           {testimonials.map((t) => (
             <Col md={4} key={t.name}>
               <Card className="testimonial-card h-100">

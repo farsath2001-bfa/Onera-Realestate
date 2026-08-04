@@ -1,21 +1,32 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import heroVideo from '../assets/videos/hero-bg.mp4';
 
 function Hero() {
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setOffset(window.scrollY * 0.4);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="onera-hero">
-      <video
-        className="onera-hero-video"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
+      <video className="onera-hero-video" autoPlay muted loop playsInline>
         <source src={heroVideo} type="video/mp4" />
       </video>
       <div className="onera-hero-overlay" />
-      <Container className="position-relative">
+      <Container
+        className="position-relative"
+        style={{
+          transform: `translateY(${offset}px)`,
+          opacity: Math.max(1 - offset / 300, 0),
+        }}
+      >
         <Row>
           <Col lg={8} className="mx-auto text-center">
             <h1>
@@ -28,7 +39,7 @@ function Hero() {
               personal approach.
             </p>
             <div className="d-flex gap-3 justify-content-center mt-4 flex-wrap">
-              <Link to="/services/land-marketing-sales" className="btn onera-btn">
+              <Link to="/services/land-sales-marketing" className="btn onera-btn">
                 Explore Properties
               </Link>
               <Link to="/contact-us" className="btn onera-btn-outline-light">

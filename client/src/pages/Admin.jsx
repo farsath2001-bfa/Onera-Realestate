@@ -17,11 +17,16 @@ function Admin() {
   const [leads, setLeads] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [tableLoading, setTableLoading] = useState(false);
   const [serviceFilter, setServiceFilter] = useState('all');
   const [statusFilter, setStatusFilter] = useState('all');
 
-  const fetchLeads = async (authToken) => {
-    setLoading(true);
+  const fetchLeads = async (authToken, isInitial = false) => {
+    if (isInitial) {
+      setLoading(true);
+    } else {
+      setTableLoading(true);
+    }
     setError('');
     try {
       const res = await axios.get(`${API_BASE}/api/leads`, {
@@ -35,11 +40,12 @@ function Admin() {
       sessionStorage.removeItem('onera_admin_token');
     } finally {
       setLoading(false);
+      setTableLoading(false);
     }
   };
 
   useEffect(() => {
-    if (token) fetchLeads(token);
+    if (token) fetchLeads(token, true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -52,7 +58,7 @@ function Admin() {
       const newToken = res.data.token;
       sessionStorage.setItem('onera_admin_token', newToken);
       setToken(newToken);
-      await fetchLeads(newToken);
+      await fetchLeads(newToken, true);
     } catch (err) {
       setError('Incorrect email or password, or the server is waking up — try again in a moment.');
       setLoading(false);
@@ -184,7 +190,36 @@ function Admin() {
         </Col>
       </Row>
 
-      {filteredLeads.length === 0 ? (
+      {error && <Alert variant="danger">{error}</Alert>}
+
+      {tableLoading ? (
+        <div className="admin-table-wrap">
+          <Table hover responsive className="admin-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Service</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[...Array(5)].map((_, i) => (
+                <tr key={i}>
+                  <td><span className="skeleton-bar" style={{ width: '70px' }} /></td>
+                  <td><span className="skeleton-bar" style={{ width: '120px' }} /></td>
+                  <td><span className="skeleton-bar" style={{ width: '160px' }} /></td>
+                  <td><span className="skeleton-bar" style={{ width: '110px' }} /></td>
+                  <td><span className="skeleton-bar" style={{ width: '140px' }} /></td>
+                  <td><span className="skeleton-bar" style={{ width: '90px' }} /></td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+      ) : filteredLeads.length === 0 ? (
         <p className="text-muted">No leads match this filter.</p>
       ) : (
         <div className="admin-table-wrap">
