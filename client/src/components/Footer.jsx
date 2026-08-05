@@ -20,12 +20,14 @@ function Footer() {
         <Row className="py-5">
           <Col md={4} className="mb-4 mb-md-0">
             <div className="footer-brand-wrap">
-              <img src={logo} alt="Onera Real Estate" className="footer-logo" />
-              <div className="footer-wordmark">
-                <span className="footer-wordmark-main">ONERA</span>
-                <span className="footer-wordmark-sub">Real Estate</span>
-              </div>
-            </div>
+  <div className="footer-logo-wrap">
+    <img src={logo} alt="Onera Real Estate" className="footer-logo" />
+  </div>
+  <div className="footer-wordmark">
+    <span className="footer-wordmark-main">ONERA</span>
+    <span className="footer-wordmark-sub">Real Estate</span>
+  </div>
+</div>
             <p className="mt-3">Spaces That Speak — real estate solutions built on trust, precision, and lasting value.</p>
             <div className="d-flex gap-3 mt-3">
               <a href="https://www.facebook.com/onerarealestate.ae" target="_blank" rel="noreferrer" className="footer-social-icon"><Facebook size={18} /></a>

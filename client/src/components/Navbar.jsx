@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Signpost, Building, GraphUp, Rulers, HouseGear, ArrowRight } from 'react-bootstrap-icons';
@@ -14,26 +13,18 @@ const serviceIcons = {
 };
 
 function AppNavbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <Navbar expand="lg" className={`onera-navbar ${scrolled ? 'scrolled' : ''}`} fixed="top">
+    <Navbar expand="lg" className="onera-navbar" fixed="top">
       <Container fluid className="navbar-container">
         <Navbar.Brand as={Link} to="/" className="navbar-brand-wrap">
-          <img src={logo} alt="Onera Real Estate" className="navbar-logo" />
-          <div className="navbar-wordmark">
-            <span className="navbar-wordmark-main">ONERA</span>
-            <span className="navbar-wordmark-sub">Real Estate</span>
-          </div>
-        </Navbar.Brand>
+  <div className="navbar-logo-wrap">
+    <img src={logo} alt="Onera Real Estate" className="navbar-logo" />
+  </div>
+  <div className="navbar-wordmark">
+    <span className="navbar-wordmark-main">ONERA</span>
+    <span className="navbar-wordmark-sub">Real Estate</span>
+  </div>
+</Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" />
         <Navbar.Collapse id="main-navbar">
           <Nav className="mx-auto align-items-lg-center navbar-links">

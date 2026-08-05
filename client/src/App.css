@@ -20,41 +20,22 @@ h1, h2, h3 {
 }
 
 /* Navbar */
+/* Navbar */
 .onera-navbar {
-  transition: min-height 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--onera-dark) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  padding: 0;
+  min-height: 84px;
 }
 
-.onera-navbar.scrolled {
-  min-height: 64px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-}
-
-.onera-navbar.scrolled .navbar-logo {
-  height: 42px;
-}
-
-.onera-navbar.scrolled .navbar-wordmark,
-.onera-navbar.scrolled .navbar-logo {
-  transition: height 0.3s ease;
-}
-
-.onera-navbar.scrolled .navbar-wordmark {
-  height: 42px;
-}
-
-.onera-navbar.scrolled .navbar-wordmark-main {
-  font-size: 18px;
-}
-
-.onera-navbar.scrolled .navbar-wordmark-sub {
-  font-size: 9px;
-}
 .navbar-container {
   padding-left: 40px;
   padding-right: 40px;
   display: flex;
   align-items: center;
 }
+
+
 
 .navbar-brand-wrap {
   margin-right: 40px;
@@ -64,12 +45,21 @@ h1, h2, h3 {
   gap: 14px;
 }
 
+.navbar-logo-wrap {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
 .navbar-logo {
-  height: 56px;
+  height: 48px;
   width: auto;
   object-fit: contain;
   display: block;
-  border-radius: 6px;
 }
 
 .navbar-wordmark {
@@ -137,7 +127,18 @@ h1, h2, h3 {
   }
 }
 
-/* Services dropdown */
+@media (max-width: 480px) {
+  .navbar-wordmark-main {
+    font-size: 18px;
+  }
+  .navbar-logo {
+    height: 44px;
+  }
+  .navbar-wordmark {
+    height: 44px;
+  }
+}
+
 /* Services dropdown */
 .services-dropdown .dropdown-menu {
   border: none;
@@ -242,6 +243,7 @@ h1, h2, h3 {
     padding: 8px 0;
   }
 }
+/*
 /* Hero with video background */
 .onera-hero {
   position: relative;
@@ -901,12 +903,24 @@ h1, h2, h3 {
   gap: 12px;
 }
 
+.footer-logo-wrap {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
 .footer-logo {
-  height: 48px;
+  height: 40px;
   width: auto;
   object-fit: contain;
-  border-radius: 6px;
+  display: block;
 }
+
+
 
 .footer-wordmark {
   height: 48px;
