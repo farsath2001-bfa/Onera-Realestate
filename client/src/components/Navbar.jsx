@@ -15,6 +15,7 @@ const serviceIcons = {
 
 function AppNavbar() {
   const [hidden, setHidden] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -36,10 +37,18 @@ function AppNavbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const closeMenu = () => setExpanded(false);
+
   return (
-    <Navbar expand="lg" className={`onera-navbar ${hidden ? 'navbar-hidden' : ''}`} fixed="top">
+    <Navbar
+      expand="lg"
+      expanded={expanded}
+      onToggle={setExpanded}
+      className={`onera-navbar ${hidden ? 'navbar-hidden' : ''}`}
+      fixed="top"
+    >
       <Container fluid className="navbar-container">
-        <Navbar.Brand as={Link} to="/" className="navbar-brand-wrap">
+        <Navbar.Brand as={Link} to="/" className="navbar-brand-wrap" onClick={closeMenu}>
           <div className="navbar-logo-wrap">
             <img src={logo} alt="Onera Real Estate" className="navbar-logo" />
           </div>
@@ -51,14 +60,14 @@ function AppNavbar() {
         <Navbar.Toggle aria-controls="main-navbar" />
         <Navbar.Collapse id="main-navbar">
           <Nav className="mx-auto align-items-lg-center navbar-links">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/about-us">About Us</Nav.Link>
+            <Nav.Link as={Link} to="/" onClick={closeMenu}>Home</Nav.Link>
+            <Nav.Link as={Link} to="/about-us" onClick={closeMenu}>About Us</Nav.Link>
             <NavDropdown title="Our Services" id="services-dropdown" className="services-dropdown" align="center">
               <div className="services-dropdown-list">
                 {services.map((s) => {
                   const Icon = serviceIcons[s.slug];
                   return (
-                    <NavDropdown.Item as={Link} to={`/services/${s.slug}`} key={s.slug} className="services-dropdown-item">
+                    <NavDropdown.Item as={Link} to={`/services/${s.slug}`} key={s.slug} className="services-dropdown-item" onClick={closeMenu}>
                       <span className="services-dropdown-thumb">
                         <Icon size={20} />
                       </span>
@@ -70,13 +79,13 @@ function AppNavbar() {
                   );
                 })}
               </div>
-              <Link to="/services" className="services-dropdown-viewall">
+              <Link to="/services" className="services-dropdown-viewall" onClick={closeMenu}>
                 View All Services <ArrowRight size={14} className="ms-1" />
               </Link>
             </NavDropdown>
-            <Nav.Link as={Link} to="/contact-us">Contact Us</Nav.Link>
+            <Nav.Link as={Link} to="/contact-us" onClick={closeMenu}>Contact Us</Nav.Link>
           </Nav>
-          <Link to="/contact-us" className="btn onera-btn navbar-cta-btn">
+          <Link to="/contact-us" className="btn onera-btn navbar-cta-btn" onClick={closeMenu}>
             Get In Touch
           </Link>
         </Navbar.Collapse>
