@@ -27,7 +27,6 @@ const milestones = [
   { year: '4 Years', label: 'Onera Real Estate Established' },
   { year: '20+ Years', label: 'Combined Market Experience' },
   { year: '70%', label: 'Client Satisfaction Rate' },
-  { year: 'Today', label: 'Trusted Across the UAE Market' },
 ];
 
 const processSteps = [

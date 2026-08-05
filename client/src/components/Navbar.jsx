@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Signpost, Building, GraphUp, Rulers, HouseGear, ArrowRight } from 'react-bootstrap-icons';
@@ -13,18 +14,40 @@ const serviceIcons = {
 };
 
 function AppNavbar() {
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 80) {
+        setHidden(false);
+      } else if (currentScrollY > lastScrollY.current) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <Navbar expand="lg" className="onera-navbar" fixed="top">
+    <Navbar expand="lg" className={`onera-navbar ${hidden ? 'navbar-hidden' : ''}`} fixed="top">
       <Container fluid className="navbar-container">
         <Navbar.Brand as={Link} to="/" className="navbar-brand-wrap">
-  <div className="navbar-logo-wrap">
-    <img src={logo} alt="Onera Real Estate" className="navbar-logo" />
-  </div>
-  <div className="navbar-wordmark">
-    <span className="navbar-wordmark-main">ONERA</span>
-    <span className="navbar-wordmark-sub">Real Estate</span>
-  </div>
-</Navbar.Brand>
+          <div className="navbar-logo-wrap">
+            <img src={logo} alt="Onera Real Estate" className="navbar-logo" />
+          </div>
+          <div className="navbar-wordmark">
+            <span className="navbar-wordmark-main">ONERA</span>
+            <span className="navbar-wordmark-sub">Real Estate</span>
+          </div>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" />
         <Navbar.Collapse id="main-navbar">
           <Nav className="mx-auto align-items-lg-center navbar-links">
