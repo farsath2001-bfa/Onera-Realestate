@@ -29,9 +29,9 @@ function Hero() {
       >
         <Row>
           <Col lg={8} className="mx-auto text-center">
-            <h1>
-              Real Estate, <span className="text-accent">Reimagined</span><br />
-              for Dubai's Future
+           <h1>
+             Trusted <span className="text-accent">Real Estate</span><br />
+             Shaping Dubai's Future
             </h1>
             <p className="lead mt-3">
               Onera Real Estate helps landowners, investors, and developers turn opportunity

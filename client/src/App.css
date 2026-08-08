@@ -26,6 +26,7 @@ h1, h2, h3 {
 }
 
 .onera-navbar.navbar-hidden {
+
   transform: translateY(-100%);
 }
 .onera-navbar {
@@ -1166,6 +1167,48 @@ h1, h2, h3 {
   .guarantee-list li {
     font-size: 16px;
   }
+  .services-grid-desktop {
+  display: flex;
+}
+
+.services-slider {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .services-grid-desktop {
+    display: none;
+  }
+
+ .services-slider {
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 12px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.services-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.services-slider-item {
+  flex: 0 0 82%;
+  scroll-snap-align: start;
+  text-decoration: none;
+  color: inherit;
+}
+
+.services-slider-hint {
+  font-size: 13px;
+}
+
+@media (max-width: 480px) {
+  .services-slider-item {
+    flex: 0 0 88%;
+  }
+}
 
   /* About hero + service detail hero */
   .about-hero,
