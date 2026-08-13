@@ -5,11 +5,12 @@ import ServicesGrid from '../components/ServicesGrid';
 import StatsCounter from '../components/StatsCounter';
 import Testimonials from '../components/Testimonials';
 import ProcessSteps from '../components/ProcessSteps';
+import CtaBanner from '../components/CtaBanner';
 import BookingForm from '../components/BookingForm';
 import usePageTitle from '../hooks/usePageTitle';
 
 function Home() {
-   usePageTitle('Home');
+  usePageTitle('Home');
   return (
     <>
       <Hero />
@@ -19,6 +20,7 @@ function Home() {
       <StatsCounter />
       <Testimonials />
       <ProcessSteps />
+      <CtaBanner />
       <BookingForm />
     </>
   );

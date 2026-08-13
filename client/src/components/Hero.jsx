@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
+import { ArrowRight } from 'react-bootstrap-icons';
 import heroVideo from '../assets/videos/hero-bg.mp4';
 
 function Hero() {
@@ -29,9 +30,9 @@ function Hero() {
       >
         <Row>
           <Col lg={8} className="mx-auto text-center">
-           <h1>
-             Trusted <span className="text-accent">Real Estate</span><br />
-             Shaping Dubai's Future
+            <h1>
+              Trusted, <span className="text-accent">Real Estate</span><br />
+              Shaping Dubai's Future
             </h1>
             <p className="lead mt-3">
               Onera Real Estate helps landowners, investors, and developers turn opportunity
@@ -40,10 +41,10 @@ function Hero() {
             </p>
             <div className="d-flex gap-3 justify-content-center mt-4 flex-wrap">
               <Link to="/services/land-sales-marketing" className="btn onera-btn">
-                Explore Properties
+                Explore Properties <ArrowRight size={16} />
               </Link>
               <Link to="/contact-us" className="btn onera-btn-outline-light">
-                Book a Consultation
+                Book a Consultation <ArrowRight size={16} />
               </Link>
             </div>
           </Col>

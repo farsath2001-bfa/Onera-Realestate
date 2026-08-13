@@ -35,7 +35,9 @@ function Testimonials() {
             </p>
           </Col>
         </Row>
-        <Row className={`g-4 fade-in-section ${isVisible ? 'visible' : ''}`}>
+
+        {/* Desktop grid */}
+        <Row className={`g-4 d-none d-lg-flex fade-in-section ${isVisible ? 'visible' : ''}`}>
           {testimonials.map((t) => (
             <Col md={4} key={t.name}>
               <Card className="testimonial-card h-100">
@@ -49,6 +51,25 @@ function Testimonials() {
             </Col>
           ))}
         </Row>
+
+        {/* Mobile/tablet slider */}
+        <div className={`testimonials-slider d-flex d-lg-none fade-in-section ${isVisible ? 'visible' : ''}`}>
+          {testimonials.map((t) => (
+            <div className="testimonials-slider-item" key={t.name}>
+              <Card className="testimonial-card h-100">
+                <Card.Body>
+                  <Quote className="quote-icon mb-3" />
+                  <Card.Text>{t.quote}</Card.Text>
+                  <h6 className="mb-0 mt-3">{t.name}</h6>
+                  <p className="testimonial-role">{t.role}</p>
+                </Card.Body>
+              </Card>
+            </div>
+          ))}
+        </div>
+        <p className="services-slider-hint d-lg-none text-center text-muted mt-3">
+          Swipe to read more →
+        </p>
       </Container>
     </section>
   );

@@ -66,26 +66,26 @@ function BookingForm() {
                  </p>
       )}
 
-              <FloatingLabel label="Full Name" className="mb-3">
-                 <Form.Control name="fullName" placeholder="Full Name" value={formData.fullName} onChange={handleChange} required />
-              </FloatingLabel>
+              <FloatingLabel label="Full Name" className="mb-3" controlId="bookingFullName">
+  <Form.Control name="fullName" placeholder="Full Name" value={formData.fullName} onChange={handleChange} autoComplete="name" required />
+</FloatingLabel>
 
-              <FloatingLabel label="Email Address" className="mb-3">
-                  <Form.Control type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} required />
-              </FloatingLabel>
+<FloatingLabel label="Email Address" className="mb-3" controlId="bookingEmail">
+  <Form.Control type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} autoComplete="email" required />
+</FloatingLabel>
 
-              <FloatingLabel label="Phone Number" className="mb-3">
-                 <Form.Control name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required />
-               </FloatingLabel>
- 
-                <FloatingLabel label="Select a Service" className="mb-4">
-                 <Form.Select name="service" value={formData.service} onChange={handleChange} required>
-                <option value="">Select a Service</option>
-                   {services.map((s) => (
-                  <option key={s.slug} value={s.name}>{s.name}</option>
-                   ))}
-              </Form.Select>
-               </FloatingLabel>
+<FloatingLabel label="Phone Number" className="mb-3" controlId="bookingPhone">
+  <Form.Control name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} autoComplete="tel" required />
+</FloatingLabel>
+
+<FloatingLabel label="Select a Service" className="mb-4" controlId="bookingService">
+  <Form.Select name="service" value={formData.service} onChange={handleChange} required>
+    <option value="">Select a Service</option>
+    {services.map((s) => (
+      <option key={s.slug} value={s.name}>{s.name}</option>
+    ))}
+           </Form.Select>
+            </FloatingLabel>
 
              <Button type="submit" className="onera-btn w-100" disabled={status === 'loading'}>
               {status === 'loading' ? (

@@ -40,14 +40,16 @@ function ProcessSteps() {
             </p>
           </Col>
         </Row>
-        <Row className={`g-4 fade-in-section ${isVisible ? 'visible' : ''}`}>
-          {steps.map((s) => (
-            <Col md={6} lg={3} key={s.number}>
+        <Row className={`g-4 fade-in-section process-steps-row ${isVisible ? 'visible' : ''}`}>
+          {steps.map((s, index) => (
+            <Col md={6} lg={3} key={s.number} className="process-step-col">
               <div className="step-card">
+                <div className="step-number-circle">{index + 1}</div>
                 <p className="step-number">{s.number}</p>
                 <h5>{s.title}</h5>
                 <p className="text-muted">{s.text}</p>
               </div>
+              {index < steps.length - 1 && <div className="step-connector d-none d-lg-block" />}
             </Col>
           ))}
         </Row>
