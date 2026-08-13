@@ -83,7 +83,12 @@ function Footer() {
 
         <Row>
           <Col className="text-center py-3 onera-footer-bottom">
-            <p className="mb-0">© {new Date().getFullYear()} Onera Real Estate. Design and Develop by Farsath.</p>
+           <p className="mb-2">© {new Date().getFullYear()} Onera Real Estate. All rights reserved.</p>
+           <div className="footer-legal-links">
+           <Link to="/privacy-policy">Privacy Policy</Link>
+           <span className="footer-legal-divider">|</span>
+            <Link to="/terms-conditions">Terms & Conditions</Link>
+         </div>
           </Col>
         </Row>
       </Container>

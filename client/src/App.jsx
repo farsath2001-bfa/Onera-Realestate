@@ -12,6 +12,8 @@ import NotFound from './pages/NotFound';
 import Admin from './pages/Admin';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
 import './App.css';
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
         </Routes>
       </PageTransition>
       <Footer />

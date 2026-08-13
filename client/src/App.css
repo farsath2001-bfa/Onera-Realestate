@@ -1614,3 +1614,53 @@ h1, h2, h3 {
     right: 16px;
   }
 }
+
+/* Legal pages */
+.legal-page h5 {
+  color: var(--onera-dark);
+  font-weight: 700;
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.legal-content p,
+.legal-content li {
+  color: var(--onera-text-muted);
+  line-height: 1.7;
+}
+
+.legal-content ul {
+  padding-left: 20px;
+}
+
+.legal-contact-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.legal-contact-list li {
+  margin-bottom: 6px;
+}
+
+.legal-contact-list a {
+  color: var(--onera-gold);
+  text-decoration: none;
+}
+
+.legal-contact-list a:hover {
+  text-decoration: underline;
+}
+
+.footer-legal-links a {
+  color: #cfd8d5;
+  font-size: 13px;
+}
+
+.footer-legal-links a:hover {
+  color: var(--onera-gold-light);
+}
+
+.footer-legal-divider {
+  margin: 0 10px;
+  color: rgba(255,255,255,0.3);
+}
