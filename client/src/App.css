@@ -1664,3 +1664,122 @@ h1, h2, h3 {
   margin: 0 10px;
   color: rgba(255,255,255,0.3);
 }
+
+/* Admin login animation */
+.admin-login-card {
+  animation: adminCardIn 0.5s ease-out;
+}
+
+@keyframes adminCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.admin-login-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--onera-cream);
+  color: var(--onera-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  animation: adminIconPulse 2s ease-in-out infinite;
+}
+
+@keyframes adminIconPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(232, 108, 36, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(232, 108, 36, 0);
+  }
+}
+
+.admin-login-page .form-control:focus {
+  transform: translateY(-1px);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-error-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+
+/* Cookie consent banner */
+.cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--onera-dark);
+  padding: 20px 0;
+  box-shadow: 0 -8px 24px rgba(0,0,0,0.2);
+  z-index: 1000;
+  animation: cookieSlideUp 0.4s ease-out;
+}
+
+@keyframes cookieSlideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.cookie-consent-text {
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.cookie-consent-text a {
+  color: var(--onera-gold-light);
+  text-decoration: underline;
+}
+
+.cookie-btn-decline {
+  border-color: rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 8px 20px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.cookie-btn-decline:hover {
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+
+.cookie-btn-accept {
+  padding: 8px 20px;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .cookie-consent-text {
+    margin-bottom: 12px;
+  }
+  .cookie-btn-decline,
+  .cookie-btn-accept {
+    width: calc(50% - 5px);
+    justify-content: center;
+  }
+}

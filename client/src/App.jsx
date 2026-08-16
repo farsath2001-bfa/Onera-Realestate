@@ -14,6 +14,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
+import CookieConsent from './components/CookieConsent';
 import './App.css';
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
       </PageTransition>
       <Footer />
       <FloatingWhatsApp />
+      <CookieConsent />
     </BrowserRouter>
   );
 }

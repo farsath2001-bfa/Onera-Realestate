@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Table, Form, Button, Badge, Alert } from 'react-bootstrap';
 import axios from 'axios';
-import { Eye, EyeSlash } from 'react-bootstrap-icons';
 import usePageTitle from '../hooks/usePageTitle';
 import services from '../data/services';
+import { Eye, EyeSlash, ShieldLock } from 'react-bootstrap-icons';
 
 const API_BASE = 'https://onera-realestate.onrender.com';
 
@@ -94,15 +94,18 @@ function Admin() {
     return serviceMatch && statusMatch;
   });
 
-  if (!authed) {
-    return (
-      <Container className="admin-login-page">
-        <Row>
-          <Col md={5} className="mx-auto">
-            <div className="booking-card">
-              <p className="section-tag">Admin</p>
-              <h2 className="mb-4">Log In</h2>
-              {error && <Alert variant="danger">{error}</Alert>}
+           if (!authed) {
+           return (
+    <Container className="admin-login-page">
+      <Row>
+        <Col md={5} className="mx-auto">
+          <div className="booking-card admin-login-card">
+            <div className="admin-login-icon">
+              <ShieldLock size={28} />
+            </div>
+            <p className="section-tag text-center">Admin</p>
+            <h2 className="mb-4 text-center">Log In</h2>
+              {error && <Alert variant="danger" className="admin-error-shake">{error}</Alert>}
               <Form onSubmit={handleLogin}>
                 {loading && (
                   <p className="text-muted text-center mb-3" style={{ fontSize: '13px' }}>
@@ -110,18 +113,12 @@ function Admin() {
                   </p>
                 )}
 
-                <Form.Control
-  type="email"
-  placeholder="Email"
-  value={email}
-  onChange={(e) => setEmail(e.target.value)}
-  className="mb-3"
-  autoComplete="username"
-  id="adminEmail"
-  required
-/>
+                <Form.Control type="email"
+                 placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}
+                 className="mb-3"  autoComplete="username" id="adminEmail" required
+                 />
 
-<div className="password-field-wrap mb-3">
+          <div className="password-field-wrap mb-3">
           <Form.Control
            type={showPassword ? 'text' : 'password'}
            placeholder="Password"
