@@ -43,3 +43,15 @@
 // }
 
 // export default App;
+
+
+function App() {
+  return (
+    <div style={{ textAlign: "center", padding: "100px" }}>
+      <h1>🚧 Website Temporarily Unavailable</h1>
+      <p>We are currently working on the website. Please check back later.</p>
+    </div>
+  );
+}
+
+export default App;
